@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://crjh2t2gm1k71"]
+
+[ext_resource type="Script" uid="uid://b3dqx1je8ulbg" path="res://scripts/main.gd" id="1_m8nhu"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_m8nhu")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 298.0
+offset_bottom = 147.0
+text = "cool label"
+horizontal_alignment = 1
+vertical_alignment = 1

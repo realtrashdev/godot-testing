@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhs0ye6r6irpg"
+path="res://.godot/imported/room squared.mp3-55928c52ec2119cbbe7ad7d551dcee36.mp3str"
+
+[deps]
+
+source_file="res://sounds/room squared.mp3"
+dest_files=["res://.godot/imported/room squared.mp3-55928c52ec2119cbbe7ad7d551dcee36.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
