@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5magscj2guku"]
+
+[ext_resource type="Texture2D" uid="uid://b8ahc5jvn81ar" path="res://assets/cat_2bit_dogsleeping.png" id="1_rqrlu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6wis"]
+atlas = ExtResource("1_rqrlu")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r57i"]
+atlas = ExtResource("1_rqrlu")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oyksp"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_w6wis")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8r57i")
+}],
+"loop": true,
+"name": &"snooze",
+"speed": 5.0
+}]
+
+[node name="Tree With Dog Sleeping" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_oyksp")
+animation = &"snooze"
+autoplay = "snooze"
+frame_progress = 0.353512

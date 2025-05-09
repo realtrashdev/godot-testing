@@ -5,6 +5,7 @@ const SPEED : float = 80.0
 const JUMP_VELOCITY : float = -100.0
 
 var _jump : bool = false
+var _grounded : bool = true
 
 @onready var anim := $AnimationPlayer
 @onready var sprite := $Sprite2D
@@ -12,35 +13,48 @@ var _jump : bool = false
 
 func _process(_delta: float) -> void:
 	update_anim()
+	
+	if Input.is_action_just_pressed("resetpos"):
+		position = Vector2(0,0)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity, accounting for variable jump height
 	if not is_on_floor():
+		_grounded = false
 		if is_on_wall_only() and headcast(): #and Input.get_axis("move_left", "move_right") != 0:
 			wall_slide()
 		elif Input.is_action_pressed("jump") and velocity.y < 0:
 			velocity += (get_gravity() / 2) * delta
 		else:
 			velocity += get_gravity() * delta
+	# Squash
+	elif _grounded == false:
+		sprite.scale = Vector2(1.2, 0.8)
+		_grounded = true
 	
-	# Handle jump.
+	# Jumping
 	if Input.is_action_just_pressed("jump"):
-		$JumpTimer.start(0.33)
+		$JumpTimer.start(0.2)
 		_jump = true
 	
 	if _jump:
 		if is_on_floor():
+			# Stretch
+			sprite.scale = Vector2(0.7, 1.3)
 			velocity.y = JUMP_VELOCITY
 			_jump = false
 		if is_on_wall_only():
+			# Stretch
+			sprite.scale = Vector2(1.2, 0.8)
 			wall_jump()
 			_jump = false
 	
-	# Get the input direction and handle the movement/deceleration.
+	# Get input
 	var direction := Input.get_axis("move_left", "move_right")
 	check_flip(direction)
 	
-	if direction and not is_on_wall_only():
+	# Apply velocity
+	if direction:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x, direction * SPEED, 1000 * delta)
 		else:
@@ -49,6 +63,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, 1000 * delta)
 	
 	move_and_slide()
+	
+	# Undo squash/stretch
+	sprite.scale.x = move_toward(sprite.scale.x, 1, 1 * delta)
+	sprite.scale.y = move_toward(sprite.scale.y, 1, 1 * delta)
 
 func check_flip(direction):
 	if is_on_wall_only():
@@ -81,10 +99,20 @@ func wall_jump():
 		sprite.flip_h = true
 
 func wall_slide():
+	# face wall
+	match $LeftWallCast2D.is_colliding():
+		true:
+			sprite.flip_h = true
+			pass
+		false:
+			sprite.flip_h = false
+			pass
+	
+	# check if slide key is pressed
 	if Input.is_action_pressed("wall_slidedown"):
-		velocity = (get_gravity() * 4) * get_physics_process_delta_time()
+		velocity = (get_gravity() * 20) * get_physics_process_delta_time()
 	else:
-		velocity = get_gravity() * get_physics_process_delta_time()
+		velocity = Vector2(0,0)
 
 func headcast():
 	var collision : bool = false

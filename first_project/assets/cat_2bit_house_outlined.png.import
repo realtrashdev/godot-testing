@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8luhgdi4ircj"
-path="res://.godot/imported/ph_wizard.png-fda0dc17b9682e217bdc5a0303a1ff0b.ctex"
+uid="uid://crm8rdufipega"
+path="res://.godot/imported/cat_2bit_house_outlined.png-cb97bd43de57236e654488af69532e71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ph_wizard.png"
-dest_files=["res://.godot/imported/ph_wizard.png-fda0dc17b9682e217bdc5a0303a1ff0b.ctex"]
+source_file="res://assets/cat_2bit_house_outlined.png"
+dest_files=["res://.godot/imported/cat_2bit_house_outlined.png-cb97bd43de57236e654488af69532e71.ctex"]
 
 [params]
 

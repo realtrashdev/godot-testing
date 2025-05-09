@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l0pa7k3cx8m"
-path="res://.godot/imported/grasspathtiles_rev1.png-423ff6f05bdc9f6f146a1fe1e811833f.ctex"
+uid="uid://cr5jemxxejrxu"
+path="res://.godot/imported/cat_2bit_tiles_bridge.png-c9031f2b236a95215064b733049e7f37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/grasspathtiles_rev1.png"
-dest_files=["res://.godot/imported/grasspathtiles_rev1.png-423ff6f05bdc9f6f146a1fe1e811833f.ctex"]
+source_file="res://assets/cat_2bit_tiles_bridge.png"
+dest_files=["res://.godot/imported/cat_2bit_tiles_bridge.png-c9031f2b236a95215064b733049e7f37.ctex"]
 
 [params]
 

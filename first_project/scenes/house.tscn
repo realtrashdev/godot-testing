@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bstrqr440s7tc"]
+
+[ext_resource type="Texture2D" uid="uid://crm8rdufipega" path="res://assets/cat_2bit_house_outlined.png" id="1_d7po0"]
+
+[sub_resource type="Curve" id="Curve_d7po0"]
+_data = [Vector2(0, 0.494382), 0.0, 1.27556, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_d7po0"]
+offsets = PackedFloat32Array(0, 0.704225, 1)
+colors = PackedColorArray(0.513726, 0.419608, 0.560784, 1, 0.513726, 0.419608, 0.560784, 1, 0.513726, 0.419608, 0.560784, 0)
+
+[node name="House" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("1_d7po0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(13, -12)
+amount = 1
+explosiveness = 1.0
+direction = Vector2(0.25, -1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+scale_amount_min = 5.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_d7po0")
+color_ramp = SubResource("Gradient_d7po0")
