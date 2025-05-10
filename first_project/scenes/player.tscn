@@ -1,13 +1,54 @@
-[gd_scene load_steps=11 format=3 uid="uid://druswteyrhs8a"]
+[gd_scene load_steps=14 format=3 uid="uid://druswteyrhs8a"]
 
 [ext_resource type="Script" uid="uid://ckksoqvng8smn" path="res://scripts/playermovement.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://doqdx26suu3ph" path="res://assets/cat_2bit_idle.png" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://c17woq685n0j7" path="res://sounds/sfx/sfx_jump1.wav" id="2_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://cxcq0wvkdmvgr" path="res://sounds/sfx/sfx_walk1.wav" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dw31juvk4mtg8" path="res://assets/cat_2bit_move.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bgxncolr8qou3" path="res://assets/cat_2bit_jump.png" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 radius = 3.0
 height = 10.0
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAudioStream:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAudioStream:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAudioStream:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_tuyoq"]
 resource_name = "idle"
@@ -205,9 +246,46 @@ tracks/4/keys = {
 "update": 0,
 "values": [-0.0872665, 0.0, 0.0872665, 0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerAudioStream:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 1,
+"values": [ExtResource("3_fjrip")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerAudioStream:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0, 0),
+"update": 1,
+"values": [true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerAudioStream:pitch_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0, 0),
+"update": 0,
+"values": [1.4, 1.3]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
 _data = {
+&"RESET": SubResource("Animation_fjrip"),
 &"idle": SubResource("Animation_tuyoq"),
 &"jump": SubResource("Animation_qlg0r"),
 &"move": SubResource("Animation_smehm")
@@ -220,11 +298,15 @@ collision_layer = 3
 collision_mask = 3
 safe_margin = 0.1
 script = ExtResource("1_g2els")
+jumpsfx = ExtResource("2_tuyoq")
+walksfx = ExtResource("3_fjrip")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_g2els")
-offset = Vector2(0, -6)
-hframes = 2
+rotation = -0.0872665
+texture = ExtResource("3_qhqgy")
+offset = Vector2(0, -7)
+hframes = 4
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
@@ -234,6 +316,12 @@ shape = SubResource("CapsuleShape2D_dqkch")
 libraries = {
 &"": SubResource("AnimationLibrary_ur7pv")
 }
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="PlayerAudioStream" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
 
 [node name="LeftWallCast2D" type="ShapeCast2D" parent="."]
 position = Vector2(0, -9)
@@ -254,8 +342,5 @@ target_position = Vector2(4, 0)
 [node name="RightHeadCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, -10)
 target_position = Vector2(-4, 0)
-
-[node name="JumpTimer" type="Timer" parent="."]
-wait_time = 0.2
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

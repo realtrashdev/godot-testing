@@ -7,15 +7,17 @@ const JUMP_VELOCITY : float = -100.0
 var _jump : bool = false
 var _grounded : bool = true
 
-@onready var anim := $AnimationPlayer
-@onready var sprite := $Sprite2D
+@onready var anim : AnimationPlayer = $AnimationPlayer
+@onready var sprite : Sprite2D = $Sprite2D
+@onready var audio : AudioStreamPlayer2D = $PlayerAudioStream
+
+@export var canjump : bool = true
+@export var jumpsfx : AudioStreamWAV
+@export var walksfx : AudioStreamWAV
 
 
 func _process(_delta: float) -> void:
 	update_anim()
-	
-	if Input.is_action_just_pressed("resetpos"):
-		position = Vector2(0,0)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity, accounting for variable jump height
@@ -34,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Jumping
 	if Input.is_action_just_pressed("jump"):
+		if !canjump: return
 		$JumpTimer.start(0.2)
 		_jump = true
 	
@@ -42,10 +45,10 @@ func _physics_process(delta: float) -> void:
 			# Stretch
 			sprite.scale = Vector2(0.7, 1.3)
 			velocity.y = JUMP_VELOCITY
+			play_audio(jumpsfx, 1, 0.2)
+			bunny_hop()
 			_jump = false
 		if is_on_wall_only():
-			# Stretch
-			sprite.scale = Vector2(1.2, 0.8)
 			wall_jump()
 			_jump = false
 	
@@ -76,7 +79,6 @@ func check_flip(direction):
 	elif direction > 0:
 		sprite.flip_h = false
 
-# gonna need to change to animation tree
 func update_anim():
 	if not is_on_floor():
 		anim.play("jump")
@@ -89,14 +91,20 @@ func update_anim():
 		return
 
 func wall_jump():
+	if not $LeftWallCast2D.is_colliding() and not $RightWallCast2D.is_colliding():
+		return
+	
+	velocity.y = JUMP_VELOCITY / 1.2
+	
 	if $LeftWallCast2D.is_colliding():
-		velocity.y = JUMP_VELOCITY / 1.2
 		velocity.x = 1.2 * SPEED
 		sprite.flip_h = false
 	elif $RightWallCast2D.is_colliding():
-		velocity.y = JUMP_VELOCITY / 1.2
 		velocity.x = -1.2 * SPEED
 		sprite.flip_h = true
+	# Stretch
+	sprite.scale = Vector2(1.3, 0.7)
+	play_audio(jumpsfx, 1.5, 0.2)
 
 func wall_slide():
 	# face wall
@@ -118,8 +126,25 @@ func headcast():
 	var collision : bool = false
 	if $LeftHeadCast2D.is_colliding() or $RightHeadCast2D.is_colliding():
 		collision = true
-	print(collision)
 	return collision
+
+func play_audio(sound, initial_pitch, pitch_difference):
+	audio.stream = sound
+	audio.pitch_scale = initial_pitch
+	audio.pitch_scale += randf_range(-pitch_difference, pitch_difference)
+	audio.play()
+
+func bunny_hop():
+	if velocity.x < 0:
+		velocity.x += -0.1 * SPEED
+		if velocity.x < -1.5 * SPEED:
+			print("max bunnyhop speed!")
+			velocity.x = -1.5 * SPEED
+	elif velocity.x > 0:
+		velocity.x += 0.1 * SPEED
+		if velocity.x > 1.5 * SPEED:
+			print("max bunnyhop speed!")
+			velocity.x = 1.5 * SPEED
 
 func _on_jump_timer_timeout() -> void:
 	_jump = false

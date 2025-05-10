@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=3 uid="uid://03rtuyncr2kh"]
+
+[ext_resource type="PackedScene" uid="uid://brbtdww7jbsdk" path="res://scenes/level_select_button.tscn" id="1_m4235"]
+[ext_resource type="Script" uid="uid://btmaqo2dj11f" path="res://scripts/level_select_menu.gd" id="1_wyt36"]
+
+[node name="LevelSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wyt36")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -113.0
+offset_right = 136.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelColumn1" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="LevelSelectButton" parent="HBoxContainer/LevelColumn1" instance=ExtResource("1_m4235")]
+layout_mode = 2
+
+[node name="LevelSelectButton2" parent="HBoxContainer/LevelColumn1" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "4"
+
+[node name="LevelSelectButton3" parent="HBoxContainer/LevelColumn1" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "7"
+
+[node name="LevelSelectButton4" parent="HBoxContainer/LevelColumn1" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "10"
+
+[node name="LevelSelectButton5" parent="HBoxContainer/LevelColumn1" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "13"
+
+[node name="LevelColumn2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="LevelSelectButton" parent="HBoxContainer/LevelColumn2" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "2"
+
+[node name="LevelSelectButton2" parent="HBoxContainer/LevelColumn2" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "5"
+
+[node name="LevelSelectButton3" parent="HBoxContainer/LevelColumn2" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "8"
+
+[node name="LevelSelectButton4" parent="HBoxContainer/LevelColumn2" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "11"
+
+[node name="LevelSelectButton5" parent="HBoxContainer/LevelColumn2" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "14"
+
+[node name="LevelColumn3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="LevelSelectButton" parent="HBoxContainer/LevelColumn3" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "3"
+
+[node name="LevelSelectButton2" parent="HBoxContainer/LevelColumn3" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "6"
+
+[node name="LevelSelectButton3" parent="HBoxContainer/LevelColumn3" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "9"
+
+[node name="LevelSelectButton4" parent="HBoxContainer/LevelColumn3" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "12"
+
+[node name="LevelSelectButton5" parent="HBoxContainer/LevelColumn3" instance=ExtResource("1_m4235")]
+layout_mode = 2
+level_number = "15"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.5
+offset_top = 100.0
+offset_right = 169.5
+offset_bottom = 140.0
+grow_horizontal = 2
+text = "LEVEL SELECT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="level_selected" from="HBoxContainer/LevelColumn1/LevelSelectButton" to="." method="_on_level_select_button_level_selected"]

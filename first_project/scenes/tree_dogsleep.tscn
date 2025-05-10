@@ -24,7 +24,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Tree With Dog Sleeping" type="AnimatedSprite2D"]
+[node name="TreeDogSleep" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_oyksp")
 animation = &"snooze"
 autoplay = "snooze"

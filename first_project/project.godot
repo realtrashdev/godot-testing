@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="first_project"
-run/main_scene="uid://b72puukoys1b4"
+run/main_scene="uid://cki60kj6t7yuh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 

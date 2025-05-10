@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://brbtdww7jbsdk"]
+
+[ext_resource type="Script" uid="uid://brfrvtb0dggy8" path="res://scripts/level_select_button.gd" id="1_5au5s"]
+
+[node name="LevelSelectButton" type="Button"]
+offset_right = 124.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 24
+text = "Level 0"
+script = ExtResource("1_5au5s")
+level_number = "1"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
