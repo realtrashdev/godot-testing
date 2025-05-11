@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://druswteyrhs8a"]
+[gd_scene load_steps=16 format=3 uid="uid://druswteyrhs8a"]
 
 [ext_resource type="Script" uid="uid://ckksoqvng8smn" path="res://scripts/playermovement.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://doqdx26suu3ph" path="res://assets/cat_2bit_idle.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://doqdx26suu3ph" path="res://assets/cat/cat_2bit_idle.png" id="2_g2els"]
 [ext_resource type="AudioStream" uid="uid://c17woq685n0j7" path="res://sounds/sfx/sfx_jump1.wav" id="2_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://cxcq0wvkdmvgr" path="res://sounds/sfx/sfx_walk1.wav" id="3_fjrip"]
-[ext_resource type="Texture2D" uid="uid://dw31juvk4mtg8" path="res://assets/cat_2bit_move.png" id="3_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://bgxncolr8qou3" path="res://assets/cat_2bit_jump.png" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://dw31juvk4mtg8" path="res://assets/cat/cat_2bit_move.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bgxncolr8qou3" path="res://assets/cat/cat_2bit_jump.png" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bfyftn8enptto" path="res://assets/cat/cat_2bit_wallcling.png" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 radius = 3.0
@@ -48,6 +49,66 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_dqkch")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:hframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -6)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_tuyoq"]
@@ -283,12 +344,77 @@ tracks/7/keys = {
 "values": [1.4, 1.3]
 }
 
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "wallcling"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001),
+"transitions": PackedFloat32Array(0),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 1,
+"values": [ExtResource("7_fjrip")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [Vector2(0, -6)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ur7pv"]
 _data = {
 &"RESET": SubResource("Animation_fjrip"),
 &"idle": SubResource("Animation_tuyoq"),
 &"jump": SubResource("Animation_qlg0r"),
-&"move": SubResource("Animation_smehm")
+&"move": SubResource("Animation_smehm"),
+&"wallcling": SubResource("Animation_ur7pv")
 }
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_dqkch"]
@@ -302,11 +428,8 @@ jumpsfx = ExtResource("2_tuyoq")
 walksfx = ExtResource("3_fjrip")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -0.0872665
-texture = ExtResource("3_qhqgy")
-offset = Vector2(0, -7)
-hframes = 4
-frame = 2
+texture = ExtResource("4_dqkch")
+offset = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)

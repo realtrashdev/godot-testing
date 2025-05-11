@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr5jemxxejrxu"
-path="res://.godot/imported/cat_2bit_tiles_bridge.png-c9031f2b236a95215064b733049e7f37.ctex"
+uid="uid://bmm5cw5h2ulqw"
+path="res://.godot/imported/cat_2bit_ouch.png-a22f824dd62c90347a64107a0d289883.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cat_2bit_tiles_bridge.png"
-dest_files=["res://.godot/imported/cat_2bit_tiles_bridge.png-c9031f2b236a95215064b733049e7f37.ctex"]
+source_file="res://assets/cat/cat_2bit_ouch.png"
+dest_files=["res://.godot/imported/cat_2bit_ouch.png-a22f824dd62c90347a64107a0d289883.ctex"]
 
 [params]
 

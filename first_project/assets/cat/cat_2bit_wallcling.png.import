@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw31juvk4mtg8"
-path="res://.godot/imported/cat_2bit_move.png-949c68404323a4d91373989f3fde4220.ctex"
+uid="uid://bfyftn8enptto"
+path="res://.godot/imported/cat_2bit_wallcling.png-e65aa0f0b8385c34e2289596bfdd5e65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cat_2bit_move.png"
-dest_files=["res://.godot/imported/cat_2bit_move.png-949c68404323a4d91373989f3fde4220.ctex"]
+source_file="res://assets/cat/cat_2bit_wallcling.png"
+dest_files=["res://.godot/imported/cat_2bit_wallcling.png-e65aa0f0b8385c34e2289596bfdd5e65.ctex"]
 
 [params]
 

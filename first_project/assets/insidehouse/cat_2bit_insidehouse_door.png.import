@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgxncolr8qou3"
-path="res://.godot/imported/cat_2bit_jump.png-12c909f58116b160dae41bfd91077a86.ctex"
+uid="uid://b3alr5chm5ary"
+path="res://.godot/imported/cat_2bit_insidehouse_door.png-e9ddcdbf03cded693b7e7e2bbcf2f44d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cat_2bit_jump.png"
-dest_files=["res://.godot/imported/cat_2bit_jump.png-12c909f58116b160dae41bfd91077a86.ctex"]
+source_file="res://assets/insidehouse/cat_2bit_insidehouse_door.png"
+dest_files=["res://.godot/imported/cat_2bit_insidehouse_door.png-e9ddcdbf03cded693b7e7e2bbcf2f44d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5xv6ojcy4bvw"
-path="res://.godot/imported/cat_2bit_tiles_island1.png-6d958120ee97c76ac307c1aac29ce9d5.ctex"
+uid="uid://d3rlmakk0uglx"
+path="res://.godot/imported/cat_2bit_insidehouse_tiles1.png-667d266d3c625ead20af4034de7b81cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cat_2bit_tiles_island1.png"
-dest_files=["res://.godot/imported/cat_2bit_tiles_island1.png-6d958120ee97c76ac307c1aac29ce9d5.ctex"]
+source_file="res://assets/insidehouse/cat_2bit_insidehouse_tiles1.png"
+dest_files=["res://.godot/imported/cat_2bit_insidehouse_tiles1.png-667d266d3c625ead20af4034de7b81cc.ctex"]
 
 [params]
 

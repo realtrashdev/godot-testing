@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmm5cw5h2ulqw"
-path="res://.godot/imported/cat_2bit_ouch.png-001f60ef10d9c6f358e3b5a3575f706e.ctex"
+uid="uid://bgopkcm3bnpe8"
+path="res://.godot/imported/cat_2bit_insidehouse_fireplace.png-0de580995d8f09aea4ff74a5d418172c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cat_2bit_ouch.png"
-dest_files=["res://.godot/imported/cat_2bit_ouch.png-001f60ef10d9c6f358e3b5a3575f706e.ctex"]
+source_file="res://assets/insidehouse/cat_2bit_insidehouse_fireplace.png"
+dest_files=["res://.godot/imported/cat_2bit_insidehouse_fireplace.png-0de580995d8f09aea4ff74a5d418172c.ctex"]
 
 [params]
 

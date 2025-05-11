@@ -11,6 +11,7 @@ var _grounded : bool = true
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var audio : AudioStreamPlayer2D = $PlayerAudioStream
 
+@export var getinput : bool = true
 @export var canjump : bool = true
 @export var jumpsfx : AudioStreamWAV
 @export var walksfx : AudioStreamWAV
@@ -20,6 +21,8 @@ func _process(_delta: float) -> void:
 	update_anim()
 
 func _physics_process(delta: float) -> void:
+	if not getinput: return
+	
 	# Add the gravity, accounting for variable jump height
 	if not is_on_floor():
 		_grounded = false
@@ -80,7 +83,10 @@ func check_flip(direction):
 		sprite.flip_h = false
 
 func update_anim():
-	if not is_on_floor():
+	if is_on_wall_only() and headcast():
+		anim.play("wallcling")
+		return
+	elif not is_on_floor():
 		anim.play("jump")
 		return
 	elif velocity.x != 0:
@@ -139,12 +145,12 @@ func bunny_hop():
 		velocity.x += -0.1 * SPEED
 		if velocity.x < -1.5 * SPEED:
 			print("max bunnyhop speed!")
-			velocity.x = -1.5 * SPEED
+	
 	elif velocity.x > 0:
 		velocity.x += 0.1 * SPEED
 		if velocity.x > 1.5 * SPEED:
 			print("max bunnyhop speed!")
-			velocity.x = 1.5 * SPEED
+	
 
 func _on_jump_timer_timeout() -> void:
 	_jump = false

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqfoveyqfmpl"]
+
+[ext_resource type="Script" uid="uid://gsr7otgms6xd" path="res://scripts/menuoption.gd" id="1_vxpvg"]
+[ext_resource type="Texture2D" uid="uid://bgopkcm3bnpe8" path="res://assets/insidehouse/cat_2bit_insidehouse_fireplace.png" id="2_5jehn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqtb6"]
+atlas = ExtResource("2_5jehn")
+region = Rect2(0, 0, 16, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6qxu"]
+atlas = ExtResource("2_5jehn")
+region = Rect2(16, 0, 16, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ud8i4"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_fqtb6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_l6qxu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wetln"]
+size = Vector2(14, 38)
+
+[node name="MenuOptionOptions" type="Area2D"]
+z_index = -1
+script = ExtResource("1_vxpvg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ud8i4")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wetln")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

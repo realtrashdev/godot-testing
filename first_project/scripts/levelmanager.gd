@@ -11,3 +11,4 @@ func _process(delta: float) -> void:
 func _on_death_collider_player_died() -> void:
 	$Player.velocity = Vector2.ZERO
 	$Player.position = respawn_location
+	$Player.get_node("Sprite2D").flip_h = false

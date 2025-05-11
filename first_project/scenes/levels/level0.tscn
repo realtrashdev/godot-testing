@@ -1,11 +1,29 @@
-[gd_scene load_steps=13 format=4 uid="uid://u5x8f2ivapy7"]
+[gd_scene load_steps=18 format=4 uid="uid://u5x8f2ivapy7"]
 
-[ext_resource type="Script" uid="uid://bfep7fbgmj6ep" path="res://scripts/levelmanager.gd" id="1_tcqsn"]
+[ext_resource type="Script" uid="uid://c31m17holxhrj" path="res://scripts/menumanager.gd" id="1_l3elg"]
 [ext_resource type="PackedScene" uid="uid://druswteyrhs8a" path="res://scenes/player.tscn" id="2_6q6d4"]
-[ext_resource type="Texture2D" uid="uid://cr5jemxxejrxu" path="res://assets/cat_2bit_tiles_bridge.png" id="3_l3elg"]
-[ext_resource type="Texture2D" uid="uid://c66q72b043dla" path="res://assets/cat_2bit_tiles1.png" id="4_6hrqr"]
-[ext_resource type="Texture2D" uid="uid://b5xv6ojcy4bvw" path="res://assets/cat_2bit_tiles_island1.png" id="5_wetln"]
+[ext_resource type="Texture2D" uid="uid://d3rlmakk0uglx" path="res://assets/insidehouse/cat_2bit_insidehouse_tiles1.png" id="3_cm1v6"]
+[ext_resource type="Texture2D" uid="uid://cr5jemxxejrxu" path="res://assets/tiles/cat_2bit_tiles_bridge.png" id="3_l3elg"]
+[ext_resource type="Texture2D" uid="uid://c66q72b043dla" path="res://assets/tiles/cat_2bit_tiles1.png" id="4_6hrqr"]
+[ext_resource type="Texture2D" uid="uid://b5xv6ojcy4bvw" path="res://assets/tiles/cat_2bit_tiles_island1.png" id="5_wetln"]
 [ext_resource type="AudioStream" uid="uid://bhs0ye6r6irpg" path="res://sounds/music/room squared.mp3" id="7_pnrra"]
+[ext_resource type="PackedScene" uid="uid://dqfoveyqfmpl" path="res://scenes/ui/menu_option_options.tscn" id="8_vals0"]
+[ext_resource type="PackedScene" uid="uid://j5b0diudbp2u" path="res://scenes/ui/menu_option_select.tscn" id="9_a76di"]
+[ext_resource type="PackedScene" uid="uid://b7a1kmhqlecgu" path="res://scenes/ui/menu_option_play.tscn" id="9_oem7y"]
+[ext_resource type="PackedScene" uid="uid://buy6x8worfyn5" path="res://scenes/ui/menu_option_quit.tscn" id="11_d3ub6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrnl3"]
+texture = ExtResource("3_cm1v6")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[sub_resource type="TileSet" id="TileSet_tcqsn"]
+tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wrnl3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ru4tf"]
 texture = ExtResource("3_l3elg")
@@ -73,24 +91,10 @@ sources/1 = SubResource("TileSetAtlasSource_lnu2h")
 sources/0 = SubResource("TileSetAtlasSource_ru4tf")
 sources/3 = SubResource("TileSetAtlasSource_ejswk")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
-texture = ExtResource("4_6hrqr")
-texture_region_size = Vector2i(4, 4)
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_iywne"]
-tile_size = Vector2i(4, 4)
-sources/1 = SubResource("TileSetAtlasSource_lbhrr")
-
 [node name="Level0" type="Node2D"]
-script = ExtResource("1_tcqsn")
+script = ExtResource("1_l3elg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-8, 9)
 zoom = Vector2(6, 6)
 limit_left = -1000000
 limit_top = -1000000
@@ -107,7 +111,7 @@ drag_bottom_margin = 0.0
 editor_draw_limits = true
 
 [node name="Player" parent="." instance=ExtResource("2_6q6d4")]
-position = Vector2(0, 24)
+position = Vector2(0, 32)
 platform_on_leave = 1
 canjump = false
 
@@ -115,25 +119,52 @@ canjump = false
 
 [node name="Foreground" type="TileMapLayer" parent="Tiles"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD//wMAAQAEAAAAAAAAAAMAAQAEAAAAAAABAAMAAQAEAAAAAAD+/wMAAQAEAAAAAAD9/wMAAQAEAAAAAAD8/wMAAQAEAAAAAAD7/wMAAQAEAAAAAAD6/wMAAQAEAAAAAAD5/wMAAQAEAAAAAAD4/wMAAQAEAAAAAAD3/wMAAQAEAAAAAAD2/wMAAQAEAAAAAAACAAMAAQAEAAAAAAADAAMAAQAEAAAAAAAEAAMAAQAEAAAAAAAFAAMAAQAEAAAAAAAGAAMAAQAEAAAAAAAHAAMAAQAEAAAAAAAIAAMAAQAEAAAAAAD2//z/AQAEAAAAAAD3//z/AQAEAAAAAAD4//z/AQAEAAAAAAD5//z/AQAEAAAAAAD6//z/AQAEAAAAAAD7//z/AQAEAAAAAAD8//z/AQAEAAAAAAD9//z/AQAEAAAAAAD+//z/AQAEAAAAAAD///z/AQAEAAAAAAAAAPz/AQAEAAAAAAABAPz/AQAEAAAAAAACAPz/AQAEAAAAAAADAPz/AQAEAAAAAAAEAPz/AQAEAAAAAAAFAPz/AQAEAAAAAAAGAPz/AQAEAAAAAAAHAPz/AQAEAAAAAAAIAPz/AQAEAAAAAAD2//3/AQAEAAAAAAD2//7/AQAEAAAAAAD2////AQAEAAAAAAD2/wAAAQAEAAAAAAD2/wEAAQAEAAAAAAD2/wIAAQAEAAAAAAAIAP3/AQAEAAAAAAAIAP7/AQAEAAAAAAAIAP//AQAEAAAAAAAIAAAAAQAEAAAAAAAIAAEAAQAEAAAAAAAIAAIAAQAEAAAAAAA=")
-tile_set = SubResource("TileSet_lbhrr")
+tile_map_data = PackedByteArray("AAAGAAQAAAABAAAAAAAFAAQAAAABAAAAAAAEAAQAAAABAAAAAAADAAQAAAABAAAAAAACAAQAAAABAAAAAAABAAQAAAABAAAAAAAAAAQAAAABAAAAAAD//wQAAAABAAAAAAD+/wQAAAABAAAAAAD9/wQAAAABAAAAAAD8/wQAAAABAAAAAAD7/wQAAAABAAAAAAD6/wQAAAABAAAAAAD5/wQAAAABAAAAAAD4/wQAAAAAAAAAAAD4//7/AAAAAAAAAAD5//7/AAAAAAAAAAD6//7/AAAAAAAAAAD7//7/AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAP//AAAAAAAAAAD4////AAAAAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_tcqsn")
 
 [node name="8x8 Decor Behind Player" type="TileMapLayer" parent="Tiles"]
 z_index = -1
 use_parent_material = true
 tile_set = SubResource("TileSet_lbhrr")
 
-[node name="8x8 Decor Front of Player" type="TileMapLayer" parent="Tiles"]
-z_index = 1
-use_parent_material = true
-tile_set = SubResource("TileSet_lbhrr")
+[node name="MenuOptions" type="Node2D" parent="."]
 
-[node name="4x4 Decor" type="TileMapLayer" parent="Tiles"]
-z_index = -1
-use_parent_material = true
-tile_set = SubResource("TileSet_iywne")
+[node name="MenuOptionPlay" parent="MenuOptions" instance=ExtResource("9_oem7y")]
+position = Vector2(-40, 20)
+menu_name = "Play"
+enter_animate = true
+
+[node name="MenuOptionSelect" parent="MenuOptions" instance=ExtResource("9_a76di")]
+position = Vector2(-16, 22)
+menu_name = "Select"
+
+[node name="MenuOptionFireplace" parent="MenuOptions" instance=ExtResource("8_vals0")]
+position = Vector2(16, 12)
+menu_name = "Options"
+
+[node name="MenuOptionQuit" parent="MenuOptions" instance=ExtResource("11_d3ub6")]
+position = Vector2(44, 26)
+menu_name = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_pnrra")
 volume_db = -10.0
 parameters/looping = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = -64.0
+offset_top = -45.0
+offset_right = 64.0
+offset_bottom = -16.0
+scale = Vector2(1e-05, 1)
+pivot_offset = Vector2(64, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/default_color = Color(0.921569, 0.843137, 0.960784, 1)
+text = "mode"
+horizontal_alignment = 1
+vertical_alignment = 3

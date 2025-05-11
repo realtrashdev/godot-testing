@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c66q72b043dla"
-path="res://.godot/imported/cat_2bit_tiles1.png-57f9468049bb51c8207755076f789c7c.ctex"
+uid="uid://deoky3edv3h12"
+path="res://.godot/imported/cat_2bit_insidehouse_bookshelf.png-7cbb6f9a6e21a33d7db1912d0b09aac0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cat_2bit_tiles1.png"
-dest_files=["res://.godot/imported/cat_2bit_tiles1.png-57f9468049bb51c8207755076f789c7c.ctex"]
+source_file="res://assets/insidehouse/cat_2bit_insidehouse_bookshelf.png"
+dest_files=["res://.godot/imported/cat_2bit_insidehouse_bookshelf.png-7cbb6f9a6e21a33d7db1912d0b09aac0.ctex"]
 
 [params]
 

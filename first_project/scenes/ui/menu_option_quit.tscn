@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://buy6x8worfyn5"]
+
+[ext_resource type="Script" uid="uid://gsr7otgms6xd" path="res://scripts/menuoption.gd" id="1_ucqec"]
+[ext_resource type="Texture2D" uid="uid://dls37dl2pp28" path="res://assets/insidehouse/cat_2bit_insidehouse_bed.png" id="2_ucqec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wetln"]
+size = Vector2(22, 10)
+
+[node name="MenuOptionQuit" type="Area2D"]
+z_index = -1
+script = ExtResource("1_ucqec")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ucqec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wetln")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
