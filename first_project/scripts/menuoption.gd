@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@onready var mode_text = $"../MarginContainer"
+#@onready var mode_text = $"../MarginContainer"
 
 
 @export var menu_name : String
@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(_body: Node2D) -> void:
 	entered = true
-	mode_text = move_toward(0, 1, 5)
+	#mode_text = move_toward(0, 1, 5)
 	
 	if enter_animate:
 		$Sprite2D.frame = 1

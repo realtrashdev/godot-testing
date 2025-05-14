@@ -7,6 +7,8 @@ const JUMP_VELOCITY : float = -100.0
 var _jump : bool = false
 var _grounded : bool = true
 
+var eyes : Sprite2D
+
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var audio : AudioStreamPlayer2D = $PlayerAudioStream
@@ -16,6 +18,9 @@ var _grounded : bool = true
 @export var jumpsfx : AudioStreamWAV
 @export var walksfx : AudioStreamWAV
 
+
+func _ready() -> void:
+	eyes = sprite.get_node("Eyes")
 
 func _process(_delta: float) -> void:
 	update_anim()
@@ -79,8 +84,10 @@ func check_flip(direction):
 		return
 	if direction < 0:
 		sprite.flip_h = true
+		eyes.scale.x = -1
 	elif direction > 0:
 		sprite.flip_h = false
+		eyes.scale.x = 1
 
 func update_anim():
 	if is_on_wall_only() and headcast():
@@ -105,9 +112,11 @@ func wall_jump():
 	if $LeftWallCast2D.is_colliding():
 		velocity.x = 1.2 * SPEED
 		sprite.flip_h = false
+		eyes.scale.x = 1
 	elif $RightWallCast2D.is_colliding():
 		velocity.x = -1.2 * SPEED
 		sprite.flip_h = true
+		eyes.scale.x = -1
 	# Stretch
 	sprite.scale = Vector2(1.3, 0.7)
 	play_audio(jumpsfx, 1.5, 0.2)
@@ -117,9 +126,11 @@ func wall_slide():
 	match $LeftWallCast2D.is_colliding():
 		true:
 			sprite.flip_h = true
+			eyes.scale.x = -1
 			pass
 		false:
 			sprite.flip_h = false
+			eyes.scale.x = 1
 			pass
 	
 	# check if slide key is pressed

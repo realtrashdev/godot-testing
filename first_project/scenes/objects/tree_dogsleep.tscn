@@ -25,6 +25,7 @@ animations = [{
 }]
 
 [node name="TreeDogSleep" type="AnimatedSprite2D"]
+z_index = -1
 sprite_frames = SubResource("SpriteFrames_oyksp")
 animation = &"snooze"
 autoplay = "snooze"
